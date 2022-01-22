@@ -14,13 +14,13 @@ The builder prevents that you have to make a giant constructor but instead you m
 
 ### Bridge
 
-### Chain of Responsibility
+### State
 
 ## Contributions
 
 ### Tom
 - Design Pattern: Bridge
-- Design Pattern: Chain of Responsibility
+- Design Pattern: State
 
 ### Stefan
 - Design Pattern: Builder
