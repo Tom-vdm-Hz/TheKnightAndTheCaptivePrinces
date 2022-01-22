@@ -46,10 +46,10 @@ public class Knight extends Person{
 
     private boolean attackSuccess(int percentage){
         if(this.randomizer() < percentage){
-            System.out.println("attack succeeded");
+            System.out.println("aanval van ridder "+this.getName()+" gelukt");
             return true;
         } else {
-            System.out.println("attack failed");
+            System.out.println("aanval van ridder "+this.getName()+" gefaald");
             return false;
         }
     }
@@ -79,20 +79,21 @@ public class Knight extends Person{
         int healthAfterDamage = this.getHealth() - damageTaken;
         if(healthAfterDamage > 0){
             this.setHealth(healthAfterDamage);
-            System.out.println(this.getName() + " took " + damageTaken + " damage");
-            System.out.println("current health of " + this.getName() + ": "  + this.getHealth());
+            System.out.println("ridder "+this.getName()+" heeft " + damageTaken + " schade genomen");
+            System.out.println("huidige levens van ridder " + this.getName() + ": "  + this.getHealth());
         }else {
-            System.out.println(this.getName() + " took too much damage");
-            System.out.println(this.getName() + " died");
+            this.setHealth(0);
+            System.out.println(this.getName() + " heeft te veel schade genomen");
+            System.out.println(this.getName() + " overleed");
         }
     }
 
     private boolean armourSucceeds(int percentage){
         if(this.randomizer() < percentage){
-            System.out.println("armour succeeded");
+            System.out.println("armour van ridder "+this.getName()+" gelukt");
             return true;
         } else {
-            System.out.println("armour failed");
+            System.out.println("armour van ridder "+this.getName()+" gefaald");
             return false;
         }
     }

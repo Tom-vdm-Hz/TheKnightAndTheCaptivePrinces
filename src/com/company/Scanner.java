@@ -10,7 +10,6 @@ public class Scanner {
             String line = (new BufferedReader(
                     new InputStreamReader(System.in))
             ).readLine();
-            System.out.println(line);
             return line;
         }
         catch(IOException ex) {

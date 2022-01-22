@@ -18,6 +18,14 @@ public class Princes extends Person{
         this.prisonType = weaponType;
     }
 
+    public String getPrisonType() {
+        return prisonType;
+    }
+
+    public void setPrisonType(String prisonType) {
+        this.prisonType = prisonType;
+    }
+
     @Override
     public String toString() {
         return "Princes{" +

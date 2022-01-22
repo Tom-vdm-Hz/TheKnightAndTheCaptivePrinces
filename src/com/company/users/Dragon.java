@@ -33,10 +33,10 @@ public class Dragon extends Person{
 
     private boolean attackSuccess(int percentage){
         if(this.randomizer() < percentage){
-            System.out.println("attack succeeded");
+            System.out.println("aanval van draak "+this.getName()+" gelukt");
             return true;
         } else {
-            System.out.println("attack failed");
+            System.out.println("aanval van draak "+this.getName()+" gefaald");
             return false;
         }
     }
@@ -45,11 +45,12 @@ public class Dragon extends Person{
         int healthAfterDamage = this.getHealth() - damageAmount;
         if(healthAfterDamage > 0){
             this.setHealth(healthAfterDamage);
-            System.out.println(this.getName() + " took " + damageAmount + " damage");
-            System.out.println("current health of " + this.getName() + ": "  + healthAfterDamage);
+            System.out.println("draak "+this.getName()+" heeft " + damageAmount + " schade genomen");
+            System.out.println("huidige levens van draak " + this.getName() + ": "  + this.getHealth());
         }else {
-            System.out.println(this.getName() + " took too much damage");
-            System.out.println(this.getName() + " died");
+            this.setHealth(0);
+            System.out.println(this.getName() + " heeft te veel schade genomen");
+            System.out.println(this.getName() + " overleed");
         }
     }
 
