@@ -32,6 +32,7 @@ public class Story {
                 return true;
             case 3:
                 System.out.println("O nee, ridder " +knight.getName()+" komt draak " +dragon.getName()+ " met "+dragon.damageType()+" damage tegen");
+                TimeUnit.SECONDS.sleep(2);
                 System.out.println("Gaat ridder " +knight.getName()+" de draak vechten (antwoord ja of nee)");
                 if(toBool(scanner.readLine())){
                     return true;
@@ -39,19 +40,25 @@ public class Story {
                 return false;
             case 4:
                 System.out.println("Gevecht wordt gestart.......");
-                System.out.println("");
-                TimeUnit.SECONDS.sleep(5);
-                System.out.println(battler(knight, dragon));
-                break;
+                TimeUnit.SECONDS.sleep(4);
+                if (toBool(battler(knight, dragon))){
+                    System.out.println("ridder "+knight.getName()+ " heeft de draak verslagen");
+                    return true;
+                }else {
+                    System.out.println("draak "+dragon.getName()+ " heeft ridder "+knight.getName()+" verslagen");
+                    return false;
+                }
             case 5:
-                break;
+                System.out.println("ridder "+knight.getName()+ " vervolgt zijn zoektoecht voor princes "+princes.getName());
+                TimeUnit.SECONDS.sleep(4);
+                System.out.println("even later ziet ridder "+knight.getName()+ " de toren waar princes "+princes.getName() +" gevangen wordt gehouden,");
+                System.out.println("en gaat hier direct naartoe");
+                return true;
             case 6:
-                break;
-            case 7:
-                break;
-            case 8:
-                break;
-
+                TimeUnit.SECONDS.sleep(4);
+                System.out.println("eenmaal aangekomen bij princes "+princes.getName()+",");
+                System.out.println("red hij haar van de toren en heeft hij gewonnen");
+                return true;
         }
         return false;
     }
@@ -69,21 +76,21 @@ public class Story {
         boolean battling = true;
         while (battling){
             if (knight.getHealth() == 0){
-                return "lost";
+                return "nee";
             }else if(dragon.getHealth() == 0){
-                return "won";
+                return "ja";
             }
             System.out.println("--------------------------------------------------");
             knight.doesDamage(dragon);
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(6);
             if (knight.getHealth() == 0){
-                return "lost";
+                return "nee";
             }else if(dragon.getHealth() == 0){
-                return "won";
+                return "ja";
             }
             System.out.println("--------------------------------------------------");
             dragon.doesDamage(knight);
-            TimeUnit.SECONDS.sleep(5);
+            TimeUnit.SECONDS.sleep(6);
         }
     return "";
     }

@@ -1,6 +1,9 @@
 package com.company.observer;
 
 import com.company.Scanner;
+import com.company.factories.DragonFactory;
+import com.company.factories.KnightFactory;
+import com.company.factories.PrincessFactory;
 import com.company.story.Story;
 import com.company.users.Dragon;
 import com.company.users.Knight;
@@ -12,23 +15,25 @@ public class Game {
     private Knight knight;
     private Princes princes;
     private Dragon dragon;
-    private int storyState = 0;
     private Story story;
     private boolean playing;
 
     public Game() {
         this.scanner = new Scanner();
         this.story = new Story();
-        this.knight = new Knight("Tom",20, 100, "sword","heavy");
-        this.princes = new Princes("Elizabeth", 21, 100, "tower");
-        this.dragon = new Dragon("Falkor", 248, 500, "fire");
+        this.princes = new PrincessFactory().createPrincess();
+        this.dragon = new DragonFactory().createDragon();
     }
 
     private void update() throws InterruptedException {
         if(this.playing){
-            if (story.checkStory(knight, princes, dragon)){
+            boolean canContinue =  story.checkStory(knight, princes, dragon);
+            if (canContinue){
                 story.setState(story.getState() + 1);
-            }else {
+                if (story.getState() == 7){
+                    gameWon();
+                }
+            }else if(canContinue == false){
                 this.playing = false;
             }
             update();
@@ -39,6 +44,7 @@ public class Game {
 
     public void start() throws InterruptedException {
         this.playing = true;
+        this.knight = new KnightFactory().createKnight();
         this.update();
     }
 

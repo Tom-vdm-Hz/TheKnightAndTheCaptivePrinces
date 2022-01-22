@@ -10,7 +10,6 @@ public class DragonFactory implements abstractFactory {
 
     @Override
     public Dragon createDragon() {
-
         return new Dragon("Falkor", getAgeDragon(), 500, getDamageType());
     }
 
@@ -35,14 +34,14 @@ public class DragonFactory implements abstractFactory {
     }
 
     public Integer getAgeDragon() {
-        switch (randomizer(150, 600)) {
-            case 150:
+        switch (randomizer(1, 3)) {
+            case 1:
                 return 150;
 
-            case 450:
+            case 2:
                 return 450;
 
-            case 600:
+            case 3:
                 return 600;
         }
         return null;

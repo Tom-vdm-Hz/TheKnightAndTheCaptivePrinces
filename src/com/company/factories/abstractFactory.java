@@ -7,7 +7,7 @@ import com.company.users.Knight;
 public interface abstractFactory {
 
     Dragon createDragon();
-    Knight createKnight();
+    Knight createKnight() throws InterruptedException;
     Princes createPrincess();
 
 
