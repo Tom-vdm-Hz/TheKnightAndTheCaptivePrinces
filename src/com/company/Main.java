@@ -10,6 +10,7 @@ public class Main {
         Knight k = new Knight("Tom",20, 100, "sword","heavy");
         Princes p = new Princes("Elizabeth", 21, 100, "tower");
         Dragon d = new Dragon("Falkor", 248, 500, "fire");
+        Scanner s = new Scanner();
 
         System.out.println(k);
         System.out.println(p);
@@ -28,5 +29,6 @@ public class Main {
         d.doesDamage(k);
         System.out.println("--------------------------------------------------");
 
+        s.readLine();
     }
 }
