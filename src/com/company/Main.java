@@ -7,9 +7,6 @@ import com.company.users.Princes;
 public class Main {
 
     public static void main(String[] args) {
-        Knight k = new Knight("Tom",20, 100, "sword","heavy");
-        Princes p = new Princes("Elizabeth", 21, 100, "tower");
-        Dragon d = new Dragon("Falkor", 248, 500, "fire");
         Scanner s = new Scanner();
 
         System.out.println(k);
