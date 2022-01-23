@@ -20,45 +20,17 @@ public class Story {
     public boolean checkStory(Knight knight, Princes princes, Dragon dragon) throws InterruptedException {
         switch (this.state){
             case 1:
-                System.out.println("Welkom "+knight.getName()+", jouw grote liefde, princes "+princes.getName()+" is gevangen genomen, jou doel is om haar te bevrijden!");
-                System.out.println("Wil je princes "+princes.getName()+" bevrijden? (antwoord ja of nee)");
-                if(toBool(scanner.readLine())){
-                    return true;
-                }
-                    return false;
+               return chapter1(knight,princes);
             case 2:
-                System.out.println("princes "+princes.getName()+" is gevangen genomen in een "+princes.getPrisonType()+", ridder "+knight.getName()+" vertrekt direct");
-                TimeUnit.SECONDS.sleep(3);
-                return true;
+                return chapter2(knight,princes);
             case 3:
-                System.out.println("O nee, ridder " +knight.getName()+" komt draak " +dragon.getName()+ " met "+dragon.damageType()+" damage tegen");
-                TimeUnit.SECONDS.sleep(2);
-                System.out.println("Gaat ridder " +knight.getName()+" de draak vechten (antwoord ja of nee)");
-                if(toBool(scanner.readLine())){
-                    return true;
-                }
-                return false;
+                return chapter3(knight, dragon);
             case 4:
-                System.out.println("Gevecht wordt gestart.......");
-                TimeUnit.SECONDS.sleep(4);
-                if (toBool(battler(knight, dragon))){
-                    System.out.println("ridder "+knight.getName()+ " heeft de draak verslagen");
-                    return true;
-                }else {
-                    System.out.println("draak "+dragon.getName()+ " heeft ridder "+knight.getName()+" verslagen");
-                    return false;
-                }
+                return chapter4(knight, dragon);
             case 5:
-                System.out.println("ridder "+knight.getName()+ " vervolgt zijn zoektoecht voor princes "+princes.getName());
-                TimeUnit.SECONDS.sleep(4);
-                System.out.println("even later ziet ridder "+knight.getName()+ " de toren waar princes "+princes.getName() +" gevangen wordt gehouden,");
-                System.out.println("en gaat hier direct naartoe");
-                return true;
+                return chapter5(knight,princes);
             case 6:
-                TimeUnit.SECONDS.sleep(4);
-                System.out.println("eenmaal aangekomen bij princes "+princes.getName()+",");
-                System.out.println("red hij haar van de toren en heeft hij gewonnen");
-                return true;
+                return chapter6(princes);
         }
         return false;
     }
@@ -93,6 +65,54 @@ public class Story {
             TimeUnit.SECONDS.sleep(6);
         }
     return "";
+    }
+
+    private boolean chapter1(Knight knight, Princes princes){
+        System.out.println("Welkom "+knight.getName()+", jouw grote liefde, princes "+princes.getName()+" is gevangen genomen, jou doel is om haar te bevrijden!");
+        System.out.println("Wil je princes "+princes.getName()+" bevrijden? (antwoord ja of nee)");
+        if(toBool(scanner.readLine())){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean chapter2(Knight knight, Princes princes) throws InterruptedException {
+        System.out.println("princes "+princes.getName()+" is gevangen genomen in een "+princes.getPrisonType()+", ridder "+knight.getName()+" vertrekt direct");
+        TimeUnit.SECONDS.sleep(3);
+        return true;
+    }
+    private boolean chapter3(Knight knight, Dragon dragon) throws InterruptedException {
+        System.out.println("O nee, ridder " +knight.getName()+" komt draak " +dragon.getName()+ " met "+dragon.damageType()+" damage tegen");
+        TimeUnit.SECONDS.sleep(2);
+        System.out.println("Gaat ridder " +knight.getName()+" de draak vechten (antwoord ja of nee)");
+        if(toBool(scanner.readLine())){
+            return true;
+        }
+        return false;
+    }
+    private boolean chapter4(Knight knight, Dragon dragon) throws InterruptedException {
+        System.out.println("Gevecht wordt gestart.......");
+        TimeUnit.SECONDS.sleep(4);
+        if (toBool(battler(knight, dragon))){
+            System.out.println("ridder "+knight.getName()+ " heeft de draak verslagen");
+            return true;
+        }else {
+            System.out.println("draak "+dragon.getName()+ " heeft ridder "+knight.getName()+" verslagen");
+            return false;
+        }
+    }
+    private boolean chapter5(Knight knight, Princes princes) throws InterruptedException {
+        System.out.println("ridder "+knight.getName()+ " vervolgt zijn zoektoecht voor princes "+princes.getName());
+        TimeUnit.SECONDS.sleep(4);
+        System.out.println("even later ziet ridder "+knight.getName()+ " de toren waar princes "+princes.getName() +" gevangen wordt gehouden,");
+        System.out.println("en gaat hier direct naartoe");
+        return true;
+    }
+    private boolean chapter6(Princes princes) throws InterruptedException {
+        TimeUnit.SECONDS.sleep(4);
+        System.out.println("eenmaal aangekomen bij princes "+princes.getName()+",");
+        System.out.println("red hij haar van de toren en heeft hij gewonnen");
+        return true;
     }
 
     public int getState() {
