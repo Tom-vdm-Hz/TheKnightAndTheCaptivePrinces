@@ -25,7 +25,7 @@ In our application the Game class implements an observer, but with only one subs
 
 
 ### State
-With a state pattern you can change the state of a class as it changes internally. 
+With a state pattern you can change the state of a class as it changes internally. State machines are usually implemented with lots of conditional operators (if or switch) that select the appropriate behavior depending on the current state of the object.
 
 Within our application, the Story class is used as a state, updated by the observer. Based upon the state that the sotry recives from the game, the correct part of the sotry is played in the console.
 
