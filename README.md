@@ -20,6 +20,8 @@ We used the bridge for the different persons in the project. We chose the bridge
 ### Observer
 With an observer you can notify multiple objects when something happens to the object they are observing. With an observer you can make an object check another to see if it had changed in any meaningful way, and if that is the case it does a specified action.
 
+In our application the Game class implements an observer, but with only one subscriber, instead of mutiple. This lonely subriber is the Story class, and the update method is used as the publish, it looks at what the story does and outputs, and updates it accordanly.
+
 
 
 ### State
